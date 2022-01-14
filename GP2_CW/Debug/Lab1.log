@@ -1,0 +1,11 @@
+﻿  main.cpp
+C:\Users\wjmzb\Documents\Visual Studio 2019\Source\Repos\GP2_CW\Lab1\MainGame.h(37,15): error C3646: 'audioManager': unknown override specifier
+C:\Users\wjmzb\Documents\Visual Studio 2019\Source\Repos\GP2_CW\Lab1\MainGame.h(37,27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  MainGame.cpp
+C:\Users\wjmzb\Documents\Visual Studio 2019\Source\Repos\GP2_CW\Lab1\MainGame.h(37,15): error C3646: 'audioManager': unknown override specifier
+C:\Users\wjmzb\Documents\Visual Studio 2019\Source\Repos\GP2_CW\Lab1\MainGame.h(37,27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\wjmzb\Documents\Visual Studio 2019\Source\Repos\GP2_CW\Lab1\MainGame.cpp(108,2): error C2065: 'audioManager': undeclared identifier
+  Mesh.cpp
+C:\Users\wjmzb\Documents\Visual Studio 2019\Source\Repos\GP2_CW\Lab1\Mesh.cpp(62,9): warning C4930: 'Sphere meshSphere(void)': prototyped function not called (was a variable definition intended?)
+  Texture.cpp
+  Generating Code...
