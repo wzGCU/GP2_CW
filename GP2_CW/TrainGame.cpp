@@ -19,7 +19,7 @@ TrainGame::TrainGame()
 {
 	trainGameState = GameState::PLAY;
 	Display* gameRenderDisplay = new Display(); //pointing to display
-
+	Shader fogshader();
     Mesh* playerModel();
 	Mesh* envModel();
 	Mesh* trackMidModel();
@@ -60,8 +60,7 @@ void TrainGame::InitialiseProcedures()
 	/* Setting camera */
 	myCamera.InitialiseCamera(glm::vec3(0, 10, -15), 70.0f, (float)gameRenderDisplay.getScreenWidth()/gameRenderDisplay.getScreenHeight(), 0.01f, 1000.0f);
 	myCamera.Pitch(0.6f);
-	shader.InitialiseShader("..\\res\\shader");
-	fogshader.InitialiseShader("..\\res\\fog");
+	fogshader.InitialiseShader("..\\res\\fog.vert", "..\\res\\fog.frag");
 
 
 	/* Setting variables to default values */
@@ -215,11 +214,20 @@ void TrainGame::RandomiseLine() {
 	}
 }
 
+void TrainGame::linkFogShader() 
+{
+	fogshader.setFloat("maxDist", 20.0f);
+	fogshader.setFloat("minDist", 0.0f);
+	fogshader.setVec3("fogColor", glm::vec3(0.0f, 0.0f, 0.0f));
+}
+
 /* Big function that renders whole game and makes it work as intended */
 void TrainGame::RenderGame()
 {
 	/* Setting green as bg because grass*/
 	gameRenderDisplay.resetDisplay(0.0f, 0.5f, 0.0f, 1.0f); 
+
+	linkFogShader();
 
 	/* Loading textures used in game */
 	Texture texturePlayer("..\\res\\Textures\\humanText.png"); 
@@ -232,15 +240,15 @@ void TrainGame::RenderGame()
 	envTransform.SetRot(glm::vec3(0.0, 0.0, 0));
 	envTransform.SetScale(glm::vec3(1.0, 1.0, 2.0));
 
-	shader.BindTexture();
-	shader.Update(envTransform, myCamera);
+	fogshader.BindTexture();
+	fogshader.Update(envTransform, myCamera);
 	textureTrack.BindTexture(0);
 	trackMidModel.RenderMesh();
 	
 	/* Dirt model Object */
 	envTransform.SetScale(glm::vec3(0.8, 1.0, 1.5));
-	shader.BindTexture();
-	shader.Update(envTransform, myCamera);
+	fogshader.BindTexture();
+	fogshader.Update(envTransform, myCamera);
 	textureGround.BindTexture(0);
 	envModel.RenderMesh();
 	
@@ -252,8 +260,8 @@ void TrainGame::RenderGame()
 		playerTransform.SetRot(glm::vec3(0.0, 0.0, 0));
 		playerTransform.SetScale(glm::vec3(1.0, 1.0, 1.0));
 
-		shader.BindTexture();
-		shader.Update(playerTransform, myCamera);
+		fogshader.BindTexture();
+		fogshader.Update(playerTransform, myCamera);
 		texturePlayer.BindTexture(0);
 		playerModel.RenderMesh();
 		playerModel.UpdateCollisionData(*playerTransform.GetPos(), 10.0f); // for collisions (environment didnt need that)
@@ -263,8 +271,8 @@ void TrainGame::RenderGame()
 		transform.SetRot(glm::vec3(0.0, 0, 0));
 		transform.SetScale(glm::vec3(1, 1, 1));
 
-		shader.BindTexture();
-		shader.Update(transform, myCamera);
+		fogshader.BindTexture();
+		fogshader.Update(transform, myCamera);
 		textureTrain.BindTexture(0);
 		trainModel.RenderMesh();
 		trainModel.UpdateCollisionData(*transform.GetPos(), 240.0f);

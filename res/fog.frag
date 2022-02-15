@@ -15,7 +15,7 @@ void main()
 
 float dist = abs( v_pos.z ); //return the absolute value (i.e the positive), store the distance from the surface point to the eye position, z coordinate used as an estimate distance
 
-float fogFactor = (Fog.maxDist - dist) / (Fog.maxDist - Fog.minDist); //computed using the prev equation so it is between 0 an 1
+float fogFactor = (maxDist - dist) / (maxDist - minDist); //computed using the prev equation so it is between 0 an 1
 
 fogFactor = clamp( fogFactor, 0.0, 1.0 ); // clamp between 0 and 1 
 

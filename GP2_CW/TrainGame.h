@@ -33,6 +33,7 @@ private:
 	bool CheckCollision(glm::vec3 o1Pos, float o1Rad, glm::vec3 o2Pos, float o2Rad); //function checking spherical collision between said objects
 	void RandomiseLine(); //function to randomise the train track on which the train will appear
 	void RenderGame(); //rendering everything
+	void linkFogShader(); //linking the fog
 
 	/* Component Variables */
 
@@ -43,7 +44,6 @@ private:
 	Mesh trackMidModel;
 	Mesh trainModel;
 	Camera myCamera;
-	Shader shader;
 	Shader fogshader;
 	AudioRelated audioManager;
 

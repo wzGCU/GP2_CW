@@ -30,11 +30,11 @@ void Shader::BindTexture()
 
 /* Function that initialises shaders - creating program, vertex and frament shaders */
 
-void Shader::InitialiseShader(const std::string& filename)
+void Shader::InitialiseShader(const std::string& vertFile, const std::string& fragFile)
 {
 	shaderProgram = glCreateProgram(); 
-	shaders[0] = CreateShader(LoadShaderFromFile("..\\res\\shader.vert"), GL_VERTEX_SHADER); 
-	shaders[1] = CreateShader(LoadShaderFromFile("..\\res\\shader.frag"), GL_FRAGMENT_SHADER); 
+	shaders[0] = CreateShader(LoadShaderFromFile(vertFile), GL_VERTEX_SHADER); 
+	shaders[1] = CreateShader(LoadShaderFromFile(fragFile), GL_FRAGMENT_SHADER); 
 
 
 	for (unsigned int i = 0; i < NUM_SHADERS; i++)
