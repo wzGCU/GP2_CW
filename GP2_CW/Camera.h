@@ -37,6 +37,16 @@ public:
 		return projection * glm::lookAt(pos, pos + zAxis, yAxis);
 	}
 
+	inline glm::mat4 GetProjection() const
+	{
+		return projection;
+	}
+
+	inline glm::mat4 GetView() const
+	{
+		return glm::lookAt(pos, pos + zAxis, yAxis);
+	}
+
 
 	/* Functions for moving camera on X and Z axis */
 
