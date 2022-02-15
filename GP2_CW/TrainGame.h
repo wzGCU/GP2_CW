@@ -44,6 +44,7 @@ private:
 	Mesh trainModel;
 	Camera myCamera;
 	Shader shader;
+	Shader fogshader;
 	AudioRelated audioManager;
 
 	/* Game Variables */

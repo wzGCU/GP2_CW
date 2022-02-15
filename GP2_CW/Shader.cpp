@@ -36,6 +36,7 @@ void Shader::InitialiseShader(const std::string& filename)
 	shaders[0] = CreateShader(LoadShaderFromFile("..\\res\\shader.vert"), GL_VERTEX_SHADER); 
 	shaders[1] = CreateShader(LoadShaderFromFile("..\\res\\shader.frag"), GL_FRAGMENT_SHADER); 
 
+
 	for (unsigned int i = 0; i < NUM_SHADERS; i++)
 	{
 		glAttachShader(shaderProgram, shaders[i]);  

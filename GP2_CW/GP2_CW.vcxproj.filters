@@ -82,6 +82,12 @@
     <None Include="..\res\shader.vert">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\res\fog.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\res\fog.vert">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\res\Models\Tracks.obj">

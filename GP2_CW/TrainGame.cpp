@@ -61,6 +61,8 @@ void TrainGame::InitialiseProcedures()
 	myCamera.InitialiseCamera(glm::vec3(0, 10, -15), 70.0f, (float)gameRenderDisplay.getScreenWidth()/gameRenderDisplay.getScreenHeight(), 0.01f, 1000.0f);
 	myCamera.Pitch(0.6f);
 	shader.InitialiseShader("..\\res\\shader");
+	fogshader.InitialiseShader("..\\res\\fog");
+
 
 	/* Setting variables to default values */
 	trainZ = 50.0f;
